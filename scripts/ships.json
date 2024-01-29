@@ -1,0 +1,22 @@
+[
+    {
+        "image": "./images/size-2ship.png",
+        "name": "2ship"
+    },
+    {
+        "image": "./images/size-3ship.png",
+        "name": "3ship"
+    },
+    {
+        "image": "./images/size-3submarine.png",
+        "name": "3submarine"
+    },
+    {
+        "image": "./images/size-4ship.png",
+        "name": "4ship"
+    },
+    {
+        "image": "./images/size-5ship.png",
+        "name": "5ship"
+    }
+]
