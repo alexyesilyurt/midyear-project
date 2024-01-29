@@ -1,17 +1,39 @@
 
+const gamesBoardContainer = document.querySelector('#gamesboard-container')
 const optionContainer = document.querySelecto('.option-container')
 const flipbutton = document.querySelector('#flipbutton')
 
 let angle = 0
 function flip () {
 const optionShips = console.log(Array.from(optionContainer.children))
-    if(angle === 0){
-        angle = 90
-    } else {
-        angle = 0
-    }
+    angle= angle === 0 ? 90 : 0 
     optionShips.forEach(optionShip => optionShip.style.transform = 'rotate(${angle}deg)')
 } 
+
+// Creating Boards
+const width = 10 
+
+function createBoard(color){
+    const gameBoardContainer = document.createElement('div')
+    gameBoardContainer.classList.add('game-board')
+    gameBoardContainer.style.backgroundColor = color
+    gameBoardContainer.id = user
+
+    for (let i =0; i<width*width; i++){
+        const block = document.createElement('div')
+        block.classList.add('block')
+        block.id = i
+        gamesBoardContainer.append(block)
+    }
+
+    gameBoardContainer.append(gameBoardContainer)
+
+
+}
+
+createBoard('yellow', 'player')
+createBoard('pink', 'computer')
+
 
 flipbutton.addEventListener('click', flip)
 
