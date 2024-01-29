@@ -3,11 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>Battleship</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <h1>Welcome to Battleship!</h1>
+    <div id="game-info">
+        <p>Turn: <span id="turn-display"></span></p>
+        <p>Info: <span id="info"></span></p>
+    </div>
+
+    <div id="gamesboard-container"></div>
+
+    <div class="option-container">
+        <div class="destroyer-preview destroyer" draggable="true"></div>
+        <div class="submarine-preview submarine" draggable="true"></div>
+        <div class="cruiser-preview" draggable="true"></div>
+        <div class="battleship-preview" draggable="true"></div>
+        <div class="carrier-preview" draggable="true"></div>
+    </div>
+
+
+
+    <!-- <h1>Welcome to Battleship!</h1>
     <h2>Choose your game mode:</h2>
     <div>
         <button onclick="window.location.href='singleplayer.html'">Single Player</button>
@@ -23,11 +41,11 @@
                 <li> Once finished with all ships, Player 2 will do the same as Player 1.</li> 
                 <li> Once Player 2 is finished with their ships, the game will begin. </li> 
                 <li> 
-                    If you don't understand the rules of the game, click <button onclick ="window."> HERE</button> 
+                    If you don't understand the rules of the game, click <button onclick ="window.location.href='rules.html'"> HERE</button> 
                 </li>
             </ul>
         </ul>
-    </div> 
+    </div>  -->
 </body>
 
 </html>
