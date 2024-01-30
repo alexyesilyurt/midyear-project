@@ -40,11 +40,6 @@ class Ship {
     constructor(name, length) {
         this.name = name
         this.length = length
-        shipEle.innerHTML = 
-        `<div class="ship">
-            <img class = "ship-unhit" src =${image} />
-        </div>
-        `;
     }
 }
 
@@ -184,7 +179,7 @@ function startGame() {
 startButton.addEventListener('click', startGame)
 
 let playerHits = []
-letComputerHits = []
+let ComputerHits = []
 const playerSunkShips = []
 const computerSunkShips = []
 

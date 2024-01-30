@@ -30,23 +30,23 @@
 }
 
 .destroyer {
-    background-color: brown;
+    background-image: url(images\size-2ship.png);
 }
 
 .submarine {
-    background-color: green;
+    background-image: url(images\size-3submarine.png);
 }
 
 .cruiser {
-    background-color: purple;
+    background-image: url(images\size-3ship.png);
 }
 
 .battleship{
-    background-color: orange;
+    background-image: url(images\size-4ship.png);
 }
 
 .carrier {
-    background-color: blue;
+    background-image: url(images\size-5ship.png);
 }
 
  
