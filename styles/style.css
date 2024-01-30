@@ -30,23 +30,31 @@
 }
 
 .destroyer {
-    background-image: url(images\size-2ship.png);
+    /* background-image: url(images\size-2ship.png);
+    background-size: cover;
+    background-position: center;
+    width: a */
+    background-color: red;
 }
 
 .submarine {
-    background-image: url(images\size-3submarine.png);
+    /* background-image: url(images\size-3submarine.png); */
+    background-color: orange;
 }
 
 .cruiser {
-    background-image: url(images\size-3ship.png);
+    /* background-image: url(images\size-3ship.png); */
+    background-color: purple;
 }
 
 .battleship{
-    background-image: url(images\size-4ship.png);
+    /* background-image: url(images\size-4ship.png); */
+    background-color: blue;
 }
 
 .carrier {
-    background-image: url(images\size-5ship.png);
+    /* background-image: url(images\size-5ship.png); */
+    background-color: green;
 }
 
  
@@ -54,18 +62,21 @@
     width: 20px;
     height: 10px;
     margin: 3px;
+
 }
 
 .submarine-preview {
     width: 30px;
     height: 10px;
     margin: 3px;
+    background-image: url(images\size-3submarine.png);
 }
 
 .cruiser-preview{
     width: 30px;
     height: 10px;
     margin: 3px;
+    background-image: url(images\size-3ship.png);
 }
 
 
@@ -73,12 +84,14 @@
     width: 40px;
     height: 10px;
     margin: 3px;
+    background-image: url(images\size-4ship.png);
 }
 
 .carrier-preview{
     width: 50px;
     height: 10px;
     margin: 3px;
+    background-image: url(images\size-5ship.png);
 }
 
 .hover { 
