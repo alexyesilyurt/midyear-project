@@ -40,6 +40,11 @@ class Ship {
     constructor(name, length) {
         this.name = name
         this.length = length
+        shipEle.innerHTML = 
+        `<div class="ship">
+            <img class = "ship-unhit" src =${image} />
+        </div>
+        `;
     }
 }
 
