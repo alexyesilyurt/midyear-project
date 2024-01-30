@@ -1,7 +1,7 @@
 .gamesboard-container{
     width: 500px;
     display: flex;
-    just-content: space-between;
+    justify-content: space-between;
 
 }
 
@@ -12,11 +12,10 @@
     flex-wrap: wrap;
 }
 
-.block{
+.block{ 
     width: 20px;
     height: 20px;
-    border: solid 1px black;
-    box-sizing: border-box;
+    
 }
 
 
@@ -46,7 +45,7 @@
     background-color: orange;
 }
 
-.cruiser {
+.carrier {
     background-color: blue;
 }
 

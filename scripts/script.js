@@ -26,9 +26,9 @@ function createBoard(color, user) {
         const block = document.createElement('div')
         block.classList.add('block')
         block.id = i
-        gamesBoardContainer.append(block)
+        gameBoardContainer.append(block)
     }
-    gameBoardContainer.append(gameBoardContainer)
+    gamesBoardContainer.append(gameBoardContainer)
 }
 
 createBoard('yellow', 'player')
