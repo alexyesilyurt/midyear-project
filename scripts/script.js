@@ -179,7 +179,7 @@ function startGame() {
 startButton.addEventListener('click', startGame)
 
 let playerHits = []
-letComputerHits = []
+let computerHits = []
 const playerSunkShips = []
 const computerSunkShips = []
 
