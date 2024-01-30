@@ -1,6 +1,6 @@
 
 const gamesBoardContainer = document.querySelector('#gamesboard-container')
-const optionContainer = document.querySelecto('.option-container')
+const optionContainer = document.querySelector('.option-container')
 const flipButton = document.querySelector('#flipbutton')
 const startButton = document.querySelector('#start-button')
 const infoDisplay = document.querySelector('#info')
@@ -59,9 +59,9 @@ let notDropped
 
 function getValidity(allBoardBlocks, isHorizontal, startIndex, ship) {
     let validStart = isHorizontal ? startIndex <= width * width - ship.length ? startIndex :
-        width * width - shipLength :
-        startIndex <= width * width - width * ship.legnth ? startIndex :
-            startIndex - ship.legnth * width + width
+        width * width - ship.length :
+        startIndex <= width * width - width * ship.length ? startIndex :
+            startIndex - ship.length * width + width
 
     let shipBlocks = []
 
@@ -80,7 +80,7 @@ function getValidity(allBoardBlocks, isHorizontal, startIndex, ship) {
             valid = shipBlocks[0].id % width !== width - (shipBlocks.length - (index + 1)))
     } else {
         shipBlocks.every((_shipBlock, index) =>
-            valid = shipBlocks[0].id < 90(width * index + 1))
+            valid = shipBlocks[0].id < 90 * (width * index + 1))
     }
 
     const notTaken = shipBlocks.every(shipBlock => !shipBlock.classList.contains('taken'))
