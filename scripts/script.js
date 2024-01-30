@@ -55,8 +55,8 @@ let notDropped
 function getValidity(allBoardBlocks, isHorizontal, startIndex, ship) {
     let validStart = isHorizontal ? startIndex <= width * width - ship.length ? startIndex :
         width * width - ship.length :
-        startIndex <= width * width - width * ship.legnth ? startIndex :
-            startIndex - ship.legnth * width + width
+        startIndex <= width * width - width * ship.length ? startIndex :
+            startIndex - ship.length * width + width
 
     let shipBlocks = []
 
