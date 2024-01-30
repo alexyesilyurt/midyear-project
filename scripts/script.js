@@ -39,7 +39,7 @@ createBoard('pink', 'computer')
 class Ship {
     constructor(name, length) {
         this.name = name
-        this.legnth = length
+        this.length = length
     }
 }
 
@@ -87,7 +87,7 @@ function addShipPiece(user, ship, startId) {
     const allBoardBlocks = document.querySelector(`#${user} div`)
     let randomBoolean = Math.random() < 0.5
     let isHorizontal = user === 'player' ? angle === 0 : randomBoolean
-    let randomStartIndex = Math.floor(math.random() * width * width)
+    let randomStartIndex = Math.floor(Math.random() * width * width)
 
     let startIndex = startId ? startId : randomStartIndex
 
@@ -149,7 +149,7 @@ function highlightArea(startIndex, ship) {
     const { shipBlocks, valid, notTaken } = getValidity(allBoardBlocks, isHorizontal, startIndex, ship)
 
     if (valid && notTaken) {
-        shipBlocks.forEach(shipBlocks => {
+        shipBlocks.forEach(shipBlock => {
             shipBlock.classList.add('hover')
             setTimeout(() => shipBlock.classList.add('hover'), 500)
 
@@ -197,7 +197,7 @@ function handleClick(e) {
 
         }
 
-        if (e.target.classList.contain('taken')) {
+        if (e.target.classList.contains('taken')) {
             infoDisplay.textContent = "Nothing hit this time."
             e.target.classList.add('empty')
         }
@@ -217,7 +217,7 @@ function computerGo() {
         infoDisplay.textContent = 'The computer is thinking...'
 
         setTimeout(() => {
-            let randomGo = Math.floor(random() * width * width)
+            let randomGo = Math.floor(Math.random() * width * width)
             const allBoardBlocks = document.querySelectorAll('#player div')
 
             if (allBoardBlocks[randomGo].classList.contains('taken') && allBoardBlocks[randomGo].classList.contains('boom')) {
@@ -254,7 +254,7 @@ function computerGo() {
 function checkScore(user, userHits, userSunkShips) {
     function checkShip(shipName, shipLength) {
         if (
-            userhits.filter(storedShipName => storedShipName === shipName).length === shipLength
+            userHits.filter(storedShipName => storedShipName === shipName).length === shipLength
         ) {
             
             if (user === 'player') {
@@ -266,7 +266,7 @@ function checkScore(user, userHits, userSunkShips) {
                 computerHits = userHits.filter(storedShipName => storedShipName !== shipName)
             }
 
-            user.SunkShips.push(shipName)
+            userSunkShips.push(shipName)
         }
 
     }
