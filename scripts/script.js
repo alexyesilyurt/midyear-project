@@ -1,21 +1,20 @@
 
 const gamesBoardContainer = document.querySelector('#gamesboard-container')
 const optionContainer = document.querySelector('.option-container')
-const flipButton = document.querySelector('#flipbutton')
+const flipButton = document.querySelector('#flip-button')
 const startButton = document.querySelector('#start-button')
 const infoDisplay = document.querySelector('#info')
 const turnDisplay = document.querySelector('#turn-display')
 
 let angle = 0
 function flip() {
-    const optionShips = console.log(Array.from(optionContainer.children))
+    const optionShips = Array.from(optionContainer.children)
     angle = angle === 0 ? 90 : 0
     optionShips.forEach(optionShip => optionShip.style.transform = `rotate(${angle}deg)`)
 }
+flipButton.addEventListener('click', flip)
 
-// Creating Boards
 const width = 10
-
 function createBoard(color, user) {
     const gameBoardContainer = document.createElement('div')
     gameBoardContainer.classList.add('game-board')
@@ -43,7 +42,7 @@ class Ship {
     }
 }
 
-const destroyer = new Ship('destroy', 2)
+const destroyer = new Ship('destroyer', 2)
 const submarine = new Ship('submarine', 3)
 const cruiser = new Ship('cruiser', 3)
 const battleship = new Ship('battleship', 4)
@@ -75,12 +74,12 @@ function getValidity(allBoardBlocks, isHorizontal, startIndex, ship) {
             valid = shipBlocks[0].id % width !== width - (shipBlocks.length - (index + 1)))
     } else {
         shipBlocks.every((_shipBlock, index) =>
-            valid = shipBlocks[0].id < 90 * (width * index + 1))
+            valid = shipBlocks[0].id < 90 + (width * index + 1))
     }
 
     const notTaken = shipBlocks.every(shipBlock => !shipBlock.classList.contains('taken'))
+    
     return { shipBlocks, valid, notTaken }
-
 }
 
 function addShipPiece(user, ship, startId) {
@@ -88,7 +87,6 @@ function addShipPiece(user, ship, startId) {
     let randomBoolean = Math.random() < 0.5
     let isHorizontal = user === 'player' ? angle === 0 : randomBoolean
     let randomStartIndex = Math.floor(Math.random() * width * width)
-
     let startIndex = startId ? startId : randomStartIndex
 
     const { shipBlocks, valid, notTaken } = getValidity(allBoardBlocks, isHorizontal, startIndex, ship)
@@ -151,7 +149,7 @@ function highlightArea(startIndex, ship) {
     if (valid && notTaken) {
         shipBlocks.forEach(shipBlock => {
             shipBlock.classList.add('hover')
-            setTimeout(() => shipBlock.classList.add('hover'), 500)
+            setTimeout(() => shipBlock.classList.remove('hover'), 500)
 
         })
     }
@@ -171,11 +169,12 @@ function startGame() {
             const allBoardBlocks = document.querySelectorAll('#computer div')
             allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
             playerTurn = true
-            turnDisplay.textContent = " Your go!"
-            infoDisplay.textContent = "The Game has started!"
+            turnDisplay.textContent = ' Your go!'
+            infoDisplay.textContent = 'The Game has started!'
         }
     }
 }
+
 startButton.addEventListener('click', startGame)
 
 let playerHits = []
@@ -187,7 +186,7 @@ function handleClick(e) {
     if (!gameOver) {
         if (e.target.classList.contains('taken')) {
             e.target.classList.add('boom')
-            infoDisplay.textContent = "You hit the computer's ship"
+            infoDisplay.textContent = 'You hit the computers ship!'
             let classes = Array.from(e.target.classList)
             classes = classes.filter(className => className !== 'block')
             classes = classes.filter(className => className !== 'boom')
@@ -197,7 +196,7 @@ function handleClick(e) {
 
         }
 
-        if (e.target.classList.contains('taken')) {
+        if (!e.target.classList.contains('taken')) {
             infoDisplay.textContent = "Nothing hit this time."
             e.target.classList.add('empty')
         }
@@ -210,17 +209,20 @@ function handleClick(e) {
 }
 
 
+
 //Define Computers go 
 function computerGo() {
     if (!gameOver) {
-        turnDisplay.textContent = "Computer's Go!"
+        turnDisplay.textContent = 'Computers Go!'
         infoDisplay.textContent = 'The computer is thinking...'
 
         setTimeout(() => {
             let randomGo = Math.floor(Math.random() * width * width)
             const allBoardBlocks = document.querySelectorAll('#player div')
 
-            if (allBoardBlocks[randomGo].classList.contains('taken') && allBoardBlocks[randomGo].classList.contains('boom')) {
+            if (allBoardBlocks[randomGo].classList.contains('taken') && 
+            allBoardBlocks[randomGo].classList.contains('boom')
+            ) {
                 computerGo()
                 return
             } else if (
@@ -228,7 +230,7 @@ function computerGo() {
                 !allBoardBlocks[randomGo].classList.contains('boom')
             ) {
                 allBoardBlocks[randomGo].classList.contains('boom')
-                infoDisplay.textContent = "The computer hit your ship"
+                infoDisplay.textContent = 'The computer hit your ship'
                 let classes = Array.from(allBoardBlocks[randomGo].classList)
                 classes = classes.filter(className => className !== 'block')
                 classes = classes.filter(className => className !== 'boom')
@@ -236,15 +238,15 @@ function computerGo() {
                 computerHits.push(...classes)
                 checkScore('computer', computerHits, computerSunkShips)
             } else {
-                infoDisplay.textContent = "Nothing hit this time."
+                infoDisplay.textContent = 'Nothing hit this time.'
                 allBoardBlocks[randomGo].classList.add('empty')
             }
         }, 3000)
 
         setTimeout(() => {
             playerTurn = true
-            turnDisplay.textContent = "Your Go!"
-            infoDisplay.textContent = "Please Take your Go."
+            turnDisplay.textContent = 'Your Go!'
+            infoDisplay.textContent = 'Please Take your Go.'
             const allBoardBlocks = document.querySelectorAll('#computer div')
             allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
         }, 6000)
@@ -256,19 +258,17 @@ function checkScore(user, userHits, userSunkShips) {
         if (
             userHits.filter(storedShipName => storedShipName === shipName).length === shipLength
         ) {
-            
             if (user === 'player') {
-                infoDisplay.textContent = `you sunk the computer's ${shipName}`
+                infoDisplay.textContent = `You sunk the computers ${shipName}`
                 playerHits = userHits.filter(storedShipName => storedShipName !== shipName)
             }
             if (user === 'computer') {
-                infoDisplay.textContent = `you sunk the your ${shipName}`
+                infoDisplay.textContent = `The computer sunk your ${shipName}`
                 computerHits = userHits.filter(storedShipName => storedShipName !== shipName)
             }
 
             userSunkShips.push(shipName)
         }
-
     }
 
     checkShip('destroyer', 2)
@@ -285,7 +285,7 @@ function checkScore(user, userHits, userSunkShips) {
         gameOver = true
     }
     if (computerSunkShips.length === 5) {
-        infoDisplay.textContent = "The compuyer has sunk all your ships. you suck!!"
+        infoDisplay.textContent = "The computer has sunk all your ships. you lose :("
         gameOver = true
     }
 
