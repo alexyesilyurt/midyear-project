@@ -78,12 +78,12 @@ function getValidity(allBoardBlocks, isHorizontal, startIndex, ship) {
     }
 
     const notTaken = shipBlocks.every(shipBlock => !shipBlock.classList.contains('taken'))
-    
+
     return { shipBlocks, valid, notTaken }
 }
 
 function addShipPiece(user, ship, startId) {
-    const allBoardBlocks = document.querySelector(`#${user} div`)
+    const allBoardBlocks = document.querySelectorAll(`#${user} div`)
     let randomBoolean = Math.random() < 0.5
     let isHorizontal = user === 'player' ? angle === 0 : randomBoolean
     let randomStartIndex = Math.floor(Math.random() * width * width)
@@ -245,8 +245,8 @@ function computerGo() {
 
         setTimeout(() => {
             playerTurn = true
-            turnDisplay.textContent = 'Your Go!'
-            infoDisplay.textContent = 'Please Take your Go.'
+            turnDisplay.textContent = 'Your turn!'
+            infoDisplay.textContent = 'Please take your turn.'
             const allBoardBlocks = document.querySelectorAll('#computer div')
             allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
         }, 6000)
