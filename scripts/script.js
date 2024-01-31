@@ -169,7 +169,7 @@ function startGame() {
             const allBoardBlocks = document.querySelectorAll('#computer div')
             allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
             playerTurn = true
-            turnDisplay.textContent = ' Your go!'
+            turnDisplay.textContent = 'Your turn!'
             infoDisplay.textContent = 'The Game has started!'
         }
     }
@@ -197,7 +197,7 @@ function handleClick(e) {
         }
 
         if (!e.target.classList.contains('taken')) {
-            infoDisplay.textContent = "Nothing hit this time."
+            infoDisplay.textContent = 'Nothing hit this time.'
             e.target.classList.add('empty')
         }
 
@@ -213,7 +213,7 @@ function handleClick(e) {
 //Define Computers go 
 function computerGo() {
     if (!gameOver) {
-        turnDisplay.textContent = 'Computers Go!'
+        turnDisplay.textContent = 'Computers Turn!'
         infoDisplay.textContent = 'The computer is thinking...'
 
         setTimeout(() => {
