@@ -6,9 +6,8 @@
     <title>Battleship</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
-    <div id="game-info">
+    <div id="game-info" class="info-text">
         <p>Turn: <span id="turn-display"></span></p>
         <p>Info: <span id="info"></span></p>
     </div>
@@ -22,10 +21,11 @@
         <div id="3" class="battleship-preview battleship" draggable="true"></div>
         <div id="4" class="carrier-preview carrier" draggable="true"></div>
     </div>
-
-    <button id="flip-button">FLIP</button>
-    <button id="start-button">START</button>
-
+    <div id="setup-buttons">
+        <button id="flip-button" class="btn">FLIP</button>
+        <button id="start-button"class="btn">START</button>
+        <button id="back-to-index" class="btn"><a href ="index.html" >Title Page</a></button>
+    </div>
     <script src="scripts/script.js"></script>
 </body>
 

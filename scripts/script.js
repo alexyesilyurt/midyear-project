@@ -5,6 +5,9 @@ const flipButton = document.querySelector('#flip-button')
 const startButton = document.querySelector('#start-button')
 const infoDisplay = document.querySelector('#info')
 const turnDisplay = document.querySelector('#turn-display')
+const setupButtons = document.getElementById('setup-buttons')
+const front = document.createElement('front')
+const end = document.createElement('end')
 
 let angle = 0
 function flip() {
@@ -15,10 +18,10 @@ function flip() {
 flipButton.addEventListener('click', flip)
 
 const width = 10
-function createBoard(color, user) {
+function createBoard(user) {
     const gameBoardContainer = document.createElement('div')
     gameBoardContainer.classList.add('game-board')
-    gameBoardContainer.style.backgroundColor = color
+    // gameBoardContainer.style.backgroundColor = color
     gameBoardContainer.id = user
 
     for (let i = 0; i < width * width; i++) {
@@ -30,8 +33,8 @@ function createBoard(color, user) {
     gamesBoardContainer.append(gameBoardContainer)
 }
 
-createBoard('yellow', 'player')
-createBoard('pink', 'computer')
+createBoard('player')
+createBoard('computer')
 
 
 // Creating Ships 
@@ -58,17 +61,18 @@ function getValidity(allBoardBlocks, isHorizontal, startIndex, ship) {
             startIndex - ship.length * width + width
 
     let shipBlocks = []
-
+    let directionClass
     for (let i = 0; i < ship.length; i++) {
         if (isHorizontal) {
-            shipBlocks.push(allBoardBlocks[Number(validStart) + i])
+            let hShip = allBoardBlocks[Number(validStart) + i]
+            shipBlocks.push(hShip)
         } else {
-            shipBlocks.push(allBoardBlocks[Number(validStart) + i * width])
+            let vShip=allBoardBlocks[Number(validStart) + i * width]
+            shipBlocks.push(vShip)
         }
     }
 
     let valid
-
     if (isHorizontal) {
         shipBlocks.every((_shipBlock, index) =>
             valid = shipBlocks[0].id % width !== width - (shipBlocks.length - (index + 1)))
@@ -78,8 +82,7 @@ function getValidity(allBoardBlocks, isHorizontal, startIndex, ship) {
     }
 
     const notTaken = shipBlocks.every(shipBlock => !shipBlock.classList.contains('taken'))
-
-    return { shipBlocks, valid, notTaken }
+    return { shipBlocks, valid, notTaken, directionClass }
 }
 
 function addShipPiece(user, ship, startId) {
@@ -92,9 +95,14 @@ function addShipPiece(user, ship, startId) {
     const { shipBlocks, valid, notTaken } = getValidity(allBoardBlocks, isHorizontal, startIndex, ship)
 
     if (valid && notTaken) {
-        shipBlocks.forEach(shipBlock => {
+        shipBlocks.forEach((shipBlock, index) => {
             shipBlock.classList.add(ship.name)
             shipBlock.classList.add('taken')
+            if (user === 'player') {
+                shipBlock.classList.add(isHorizontal ? 'horizontal' : 'vertical');
+                if (index===0) shipBlock.classList.add('front');
+                if (index===(ship.length-1)) shipBlock.classList.add('end');
+            }
         })
     } else {
         if (user === 'computer') addShipPiece(user, ship, startId)
@@ -230,6 +238,7 @@ function computerGo() {
                 !allBoardBlocks[randomGo].classList.contains('boom')
             ) {
                 allBoardBlocks[randomGo].classList.contains('boom')
+                allBoardBlocks[randomGo].classList.add('boom')
                 infoDisplay.textContent = 'The computer hit your ship'
                 let classes = Array.from(allBoardBlocks[randomGo].classList)
                 classes = classes.filter(className => className !== 'block')

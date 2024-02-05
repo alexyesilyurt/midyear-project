@@ -1,10 +1,11 @@
 body {
-    background-color: #75baff;
+    background-color: #A8A8A8;
 }
 
 .header {
     font-size: 30px;
     text-align: center;
+    -webkit-text-stroke: 1px black;
 }
 
 .rules {
@@ -14,7 +15,8 @@ body {
 
 #nice-font {
     font-family: 'Roboto Slab', serif;
-    color: white;
+    color: #f3f3f3;
+    /* border: 1px solid black; */
 }
 
 a {
@@ -23,12 +25,24 @@ a {
 }
 
 .game-button {
-    background-color: rgb(255, 85, 85);
+    background-color: hsl(9, 100%, 60%);
     font-size: 40px;
     padding: 14px 40px;
     border-radius: 4px;
     border: 1px solid black;
     margin-top: 15px;
+}
+.game-button:hover, .game-button:focus {
+    background-color: hsl(0, 100%, 40%);
+}
+.battleship-picture {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 600px;
+    height: 400px;
+    border: 2px solid black;
+    float: center;
 }
 
 .center {
