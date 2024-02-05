@@ -21,7 +21,7 @@ body {
     align-items: center;
 }
 .boom::after{
-    background-color: red !important;
+    background-color: red;
 }
 
 .empty::after{
@@ -34,7 +34,7 @@ body {
     width: 1.23vmin;
     height: 1.23vmin;
 }
-.empty::before, .boom::before {
+.empty::before {
     content:'';
     position: absolute;
     animation: hit .2s ease-out forwards;
@@ -44,10 +44,8 @@ body {
     width: 2vmin;
     height: 2vmin;
 }
-.boom::before {
-    content: '';
+.boom {
     animation: boom .2s ease-out forwards;
-
 }
 .miss::before {
     border-color: white;
