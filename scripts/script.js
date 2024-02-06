@@ -36,8 +36,6 @@ function createBoard(user) {
 createBoard('player')
 createBoard('computer')
 
-
-// Creating Ships 
 class Ship {
     constructor(name, length) {
         this.name = name
@@ -114,7 +112,6 @@ function addShipPiece(user, ship, startId) {
 ships.forEach(ship => addShipPiece('computer', ship))
 
 
-//Drag Player Ships 
 let draggedShip
 const optionShips = Array.from(optionContainer.children)
 optionShips.forEach(optionShip => optionShip.addEventListener('dragstart', dragStart))
@@ -147,7 +144,6 @@ function dropShip(e) {
 }
 
 
-//add highlight
 function highlightArea(startIndex, ship) {
     const allBoardBlocks = document.querySelectorAll('#player div')
     let isHorizontal = angle === 0
@@ -167,8 +163,6 @@ let gameOver = false;
 let playerTurn
 
 
-
-// Start Game 
 function startGame() {
     if (playerTurn === undefined) {
         if (optionContainer.children.length != 0) {
@@ -218,7 +212,6 @@ function handleClick(e) {
 
 
 
-//Define Computers go 
 function computerGo() {
     if (!gameOver) {
         turnDisplay.textContent = 'Computers Turn!'
@@ -299,26 +292,3 @@ function checkScore(user, userHits, userSunkShips) {
     }
 
 }
-
-
-
-
-
-
-// // https://stackoverflow.com/questions/32772708/how-to-create-a-specific-xx-size-table-battleship-game-html-css-js
-
-// var createTable = function(rows, cols) {
-//     var YArray = new Array(), 
-//         XArray, 
-//             container = $(".table");
-//     for (var i = 0; i < cols; i++) {
-//         XArray = new Array();
-//         for (var j = 0; j < rows; j++) {
-//             XArray[j] = '<div class="cell">&nbsp;</div>';
-//         }
-//         YArray[i] = '<div class="row">' + XArray.join("\r\n") + '</div>';
-//     }
-//     container.append(YArray.join("\r\n"));
-// };
-
-// createTable(10, 10);
